@@ -6,18 +6,18 @@
 [![MAUI](https://img.shields.io/badge/MAUI-512BD4.svg)](https://learn.microsoft.com/dotnet/maui/)
 [![ASP.NET](https://img.shields.io/badge/ASP.NET-512BD4.svg)](https://dotnet.microsoft.com/apps/aspnet)
 
-Apps to discover and share local events across cities.
+Apps to discover local events across cities.
 
 ## Purpose
 
-A simple foundation for discovering local events in one place, with a reusable structure for multiple cities.
+A simple foundation for discovering local events.
 
 ## Tech Stack
 
 - .NET 11
 - C#
-- .NET MAUI
-- ASP.NET Core
+- MAUI
+- ASP.NET
 
 ## Getting Started
 
@@ -25,4 +25,3 @@ A simple foundation for discovering local events in one place, with a reusable s
 git clone https://github.com/mamby/local-events.git
 cd local-events
 dotnet restore
-dotnet run --project src/LocalEvents.Api
