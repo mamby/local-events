@@ -144,7 +144,7 @@ androidComponents {
 
 dependencies {
     val composeBom = platform("androidx.compose:compose-bom:2026.09.00")
-    val androidKitBom = platform("net.mamby.androidkit:bom:0.1.31-SNAPSHOT")
+    val androidKitBom = platform("net.mamby.androidkit:bom:0.1.32-SNAPSHOT")
     val lifecycleVersion = "2.11.0"
     val media3Version = "1.11.0"
     val navigationVersion = "2.9.8"
