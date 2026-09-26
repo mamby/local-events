@@ -1,0 +1,139 @@
+{
+  "items": [
+    {
+      "id": "46524c56-4556-4e54-0000-000000000000",
+      "sequence": 0,
+      "media": {
+        "type": 0,
+        "url": "https://picsum.photos/seed/event-image-0/1080/1920",
+        "thumbnailUrl": null,
+        "audioUrl": null,
+        "durationSeconds": null,
+        "displayUrl": "https://picsum.photos/seed/event-image-0/1080/1920",
+        "isVideo": false,
+        "hasAudio": false,
+        "hasPlayback": false,
+        "playbackUrl": null,
+        "durationLabel": null,
+        "videoBadgeText": "video"
+      },
+      "category": {
+        "default": "Sport",
+        "translations": {
+          "en": "Sports",
+          "fr": "Sport",
+          "ar": "رياضة",
+          "es": "Deportes",
+          "pt": "Esportes",
+          "de": "Sport",
+          "zh-Hans": "体育",
+          "hi": "खेल",
+          "id": "Olahraga",
+          "ja": "スポーツ",
+          "ko": "스포츠",
+          "it": "Sport",
+          "tr": "Spor",
+          "ru": "Спорт",
+          "nl": "Sport",
+          "pl": "Sport",
+          "vi": "Thể thao",
+          "th": "กีฬา"
+        }
+      },
+      "categoryValue": "Sports",
+      "title": {
+        "default": "Concert coucher de soleil sur les toits",
+        "translations": {
+          "en": "Sunset rooftop concert",
+          "ar": "حفلة غروب على السطح"
+        }
+      },
+      "description": {
+        "default": "Un live indie-pop sur les toits au coucher du soleil, avec vue panoramique et food corner.",
+        "translations": {
+          "en": "An indie-pop rooftop live set at sunset, with skyline views and a local food corner.",
+          "ar": "عرض إندي بوب مباشر على السطح عند الغروب، مع إطلالة على المدينة وركن طعام محلي."
+        }
+      },
+      "longDescription": {
+        "default": "Un live indie-pop avec vue sur toute la ville, bar local et food corner.",
+        "translations": {
+          "en": "An indie-pop live set with skyline views, a local bar, and a food corner.",
+          "ar": "عرض إندي بوب مباشر مع إطلالة على أفق المدينة وبار محلي وركن للطعام."
+        }
+      },
+      "accessibility": {
+        "default": "Acces PMR; cheminement sans marche et toilettes adaptees.",
+        "translations": {
+          "en": "Wheelchair access; step-free route and accessible toilets.",
+          "ar": "امكانية دخول الكراسي المتحركة ومسار بلا درجات ودورات مياه مهيأة."
+        }
+      },
+      "ageRestriction": {
+        "minimumRequiredAge": null
+      },
+      "recommendedAge": {
+        "minimumAge": 12,
+        "maximumAge": null
+      },
+      "contextDetails": "Issy-les-Moulineaux / Online / TV: France 3",
+      "locationScopeId": "issy-les-moulineaux",
+      "attendanceOptions": [
+        {
+          "type": "Physical",
+          "displayName": {
+            "default": "Issy-les-Moulineaux",
+            "translations": {}
+          },
+          "address": null,
+          "locationScopeId": "issy-les-moulineaux",
+          "isPrimary": true
+        },
+        {
+          "type": "Online",
+          "displayName": null,
+          "address": null,
+          "locationScopeId": null,
+          "isPrimary": false
+        },
+        {
+          "type": "Television",
+          "displayName": {
+            "default": "France 3",
+            "translations": {}
+          },
+          "address": null,
+          "locationScopeId": null,
+          "isPrimary": false
+        }
+      ],
+      "startDate": "2026-09-27T07:30:00+02:00",
+      "occurrences": [
+        {
+          "startsAt": "2026-09-27T07:30:00+02:00",
+          "endsAt": "2026-09-27T09:30:00+02:00"
+        }
+      ],
+      "publishedAt": "2026-01-01T01:00:00+01:00",
+      "updatedAt": "2026-01-01T01:00:00+01:00",
+      "priceLabel": "Free",
+      "priceOptions": [
+        {
+          "type": "Free",
+          "amountMinorUnits": null,
+          "currencyCode": null,
+          "condition": null
+        }
+      ],
+      "source": {
+        "name": "Issy Tourisme",
+        "link": "https://www.issy.com/",
+        "type": "Official site"
+      },
+      "isFavorited": false
+    }
+  ],
+  "generatedAt": "2026-09-26T21:38:03.2488679+02:00",
+  "refreshCursor": "639028224000000000:46524c5645564e540000000000000000",
+  "newSinceCount": 0
+}

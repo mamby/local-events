@@ -427,3 +427,14 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Native client local state
+.idea/
+.gradle/
+.kotlin/
+local.properties
+**/build/
+*.jks
+*.keystore
+.env
+.env.*

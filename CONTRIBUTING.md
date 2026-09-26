@@ -1,34 +1,17 @@
 # 🤝 Contributing to Local Events
 
-Thank you for contributing.
+Fork this repository, create a focused branch, and open a pull request with a clear description and relevant validation. Use Conventional Commits where practical.
 
-## Getting started
+For Android prerequisites, configuration, and commands, see [the Android guide](src/android/README.md). Open `src/android` in Android Studio. This repository does not require .NET or MAUI.
 
-- Fork the repository
-- Clone your fork
-- Install the current supported .NET SDK
-- Install the MAUI workload if needed: `dotnet workload install maui`
-- Run `dotnet restore`
+Run the checks appropriate to your change from `src/android`:
 
-## Workflow
+```powershell
+.\gradlew.bat :app:assembleDevDebug
+.\gradlew.bat :app:testDevDebugUnitTest
+.\gradlew.bat :app:lintDevDebug
+```
 
-- Create a branch for your change
-- Make your changes
-- Run tests: `dotnet test`
-- Commit with a clear message
-- Open a pull request
+Run `:app:connectedDevDebugAndroidTest` only with an emulator or device. Keep localized resources consistent across all supported locales and respect AndroidKit's ownership of shared UI.
 
-## Branches
-
-- `main`: stable code
-- Use feature, fix, or hotfix branches as needed
-
-## Commit messages
-
-Use Conventional Commits when possible:
-
-```text
-feat: add event filtering
-fix: resolve startup crash
-docs: update contributing guide
-chore: upgrade dependencies
+For a backend implementation, start from [the public contract](docs/backend-contract.md). Discuss incompatible contract changes before implementation; preserve compatibility for `/v1`. Submit public contract and native-client changes here. Backend implementation, administration, and private operational configuration belong in the private service repository.
