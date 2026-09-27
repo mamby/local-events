@@ -137,12 +137,12 @@ private fun appInfo(): AndroidKitSettingsAbout {
     return AndroidKitSettingsAbout(
         appName = stringResource(R.string.app_name),
         version = "${BuildConfig.VERSION_NAME} (${BuildConfig.VERSION_CODE})",
-        privacyPolicy = link("https://fralov.com/privacy"),
-        termsOfUse = link("https://fralov.com/terms"),
+        privacyPolicy = link("https://example.com/privacy"),
+        termsOfUse = link("https://example.com/terms"),
         libraries = link("$RepositoryUrl/blob/main/THIRD-PARTY-NOTICES.md"),
         sourceCode = link(RepositoryUrl),
-        website = link("https://fralov.com"),
-        contact = link("https://fralov.com/contact"),
+        website = link("https://example.com"),
+        contact = link("https://example.com/contact"),
     )
 }
 
