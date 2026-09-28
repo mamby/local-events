@@ -78,7 +78,10 @@ android {
 
     androidResources {
         localeFilters += providers.gradleProperty("androidKitSupportedLocales").get()
-            .split(',').map { "b+" + it.replace('-', '+') }
+            .split(',').map { tag ->
+                // Android resource lookup uses the legacy Indonesian qualifier.
+                if (tag == "id") "in" else "b+" + tag.replace('-', '+')
+            }
         generateLocaleConfig = true
     }
 
