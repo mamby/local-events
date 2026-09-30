@@ -147,19 +147,19 @@ androidComponents {
 
 dependencies {
     val composeBom = platform("androidx.compose:compose-bom:2026.09.00")
-    val androidKitBom = platform("net.mamby.androidkit:bom:0.1.35-SNAPSHOT")
+    val androidKitBom = platform("net.mamby.androidkit:bom:0.1.36-SNAPSHOT")
     val lifecycleVersion = "2.11.0"
-    val media3Version = "1.11.0"
-    val navigationVersion = "2.9.8"
-    val ktorVersion = "3.5.2"
-    val coilVersion = "3.5.0"
+    val media3Version = "1.11.1"
+    val navigationVersion = "2.10.2"
+    val ktorVersion = "3.6.0"
+    val coilVersion = "3.6.3"
 
     implementation(composeBom)
     implementation(androidKitBom)
     androidTestImplementation(composeBom)
 
     implementation("net.mamby.androidkit:compose")
-    implementation("androidx.activity:activity-compose:1.14.0-alpha01")
+    implementation("androidx.activity:activity-compose:1.14.0-alpha03")
     implementation("androidx.appcompat:appcompat:1.8.0")
     implementation("androidx.compose.animation:animation")
     implementation("androidx.compose.foundation:foundation")
@@ -167,7 +167,7 @@ dependencies {
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-text")
     implementation("androidx.compose.ui:ui-tooling-preview")
-    implementation("androidx.core:core-ktx:1.19.0")
+    implementation("androidx.core:core-ktx:1.19.1")
     implementation("androidx.core:core-splashscreen:1.2.0")
     implementation("androidx.datastore:datastore-preferences:1.2.1")
     implementation("androidx.hilt:hilt-navigation-compose:1.4.0")
