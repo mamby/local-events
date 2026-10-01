@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
@@ -76,7 +78,13 @@ private fun LocalEventsApp(
     LocalEventsTheme(darkTheme = darkTheme, floatingSurfaceOpacityLevel = settings.floatingSurfaceOpacityLevel) {
         NavHost(
             navController = navController,
-            startDestination = AppRoute.Feed
+            startDestination = AppRoute.Feed,
+            enterTransition = { EnterTransition.None },
+            exitTransition = { ExitTransition.None },
+            popEnterTransition = { EnterTransition.None },
+            popExitTransition = { ExitTransition.None },
+            predictivePopEnterTransition = { EnterTransition.None },
+            predictivePopExitTransition = { ExitTransition.KeepUntilTransitionsFinished },
         ) {
             composable(AppRoute.Feed) {
                 FeedScreen(

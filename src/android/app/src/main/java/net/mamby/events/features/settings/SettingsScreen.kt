@@ -39,6 +39,7 @@ fun SettingsScreen(
 ) {
     var searchVisible by rememberSaveable { mutableStateOf(false) }
     var recentQueries by rememberSaveable { mutableStateOf(emptyList<String>()) }
+    var recentQueriesVisible by rememberSaveable { mutableStateOf(true) }
     BackHandler(enabled = searchVisible) {
         searchVisible = false
     }
@@ -56,6 +57,8 @@ fun SettingsScreen(
         onOpenSearch = { searchVisible = true },
         recentQueries = recentQueries,
         onRecentQueriesChange = { recentQueries = it },
+        recentQueriesVisible = recentQueriesVisible,
+        onRecentQueriesVisibleChange = { recentQueriesVisible = it },
     )) {
         main(key = MainSettingsPageKey, title = viewModel.string("SettingsTitle", language)) {
             section(key = "media", label = viewModel.string("MediaLabel", language)) {
@@ -108,6 +111,7 @@ fun SettingsScreen(
 fun AppInfoScreen(onBack: () -> Unit) {
     var searchVisible by rememberSaveable { mutableStateOf(false) }
     var recentQueries by rememberSaveable { mutableStateOf(emptyList<String>()) }
+    var recentQueriesVisible by rememberSaveable { mutableStateOf(true) }
     BackHandler(enabled = searchVisible) {
         searchVisible = false
     }
@@ -117,6 +121,8 @@ fun AppInfoScreen(onBack: () -> Unit) {
         onOpenSearch = { searchVisible = true },
         recentQueries = recentQueries,
         onRecentQueriesChange = { recentQueries = it },
+        recentQueriesVisible = recentQueriesVisible,
+        onRecentQueriesVisibleChange = { recentQueriesVisible = it },
     )) {
         main(key = MainSettingsPageKey, title = title)
         about(key = AboutSettingsPageKey, content = about, onOpen = {})
