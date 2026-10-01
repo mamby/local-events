@@ -184,7 +184,7 @@
     <plurals name="new_results_format">
         <item quantity="other">%1$d件の新着</item>
         </plurals>
-        <string name="settings_general">一般</string>
+        <string name="settings_appearance">外観</string>
     <string name="settings_floating_opacity">透明度</string>
     <string name="settings_min">最小</string>
     <string name="settings_max">最大</string>

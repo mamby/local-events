@@ -188,7 +188,7 @@
         <item quantity="one">1 new</item>
         <item quantity="other">%1$d new</item>
     </plurals>
-    <string name="settings_general">General</string>
+    <string name="settings_appearance">Appearance</string>
     <string name="settings_floating_opacity">Transparency</string>
     <string name="settings_min">Min</string>
     <string name="settings_max">Max</string>

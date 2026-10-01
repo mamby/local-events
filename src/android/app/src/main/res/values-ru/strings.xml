@@ -193,7 +193,7 @@
         <item quantity="many">%1$d новых</item>
         <item quantity="other">%1$d нового</item>
         </plurals>
-        <string name="settings_general">Общие</string>
+        <string name="settings_appearance">Внешний вид</string>
     <string name="settings_floating_opacity">Прозрачность</string>
     <string name="settings_min">Мин</string>
     <string name="settings_max">Макс</string>

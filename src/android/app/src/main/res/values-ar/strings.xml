@@ -199,7 +199,7 @@
         <item quantity="many">%1$d جديد</item>
         <item quantity="other">%1$d جديد</item>
     </plurals>
-    <string name="settings_general">عام</string>
+    <string name="settings_appearance">المظهر</string>
     <string name="settings_floating_opacity">الشفافية</string>
     <string name="settings_min">الأدنى</string>
     <string name="settings_max">الأقصى</string>

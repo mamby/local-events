@@ -184,7 +184,7 @@
     <plurals name="new_results_format">
         <item quantity="other">새 항목 %1$d개</item>
         </plurals>
-        <string name="settings_general">일반</string>
+        <string name="settings_appearance">모양</string>
     <string name="settings_floating_opacity">투명도</string>
     <string name="settings_min">최소</string>
     <string name="settings_max">최대</string>

@@ -190,7 +190,7 @@
         <item quantity="many">%1$d nuovi</item>
         <item quantity="other">%1$d nuovi</item>
         </plurals>
-        <string name="settings_general">Generali</string>
+        <string name="settings_appearance">Aspetto</string>
     <string name="settings_floating_opacity">Trasparenza</string>
     <string name="settings_min">Min</string>
     <string name="settings_max">Max</string>

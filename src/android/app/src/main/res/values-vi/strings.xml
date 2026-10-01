@@ -184,7 +184,7 @@
     <plurals name="new_results_format">
         <item quantity="other">%1$d mới</item>
         </plurals>
-        <string name="settings_general">Chung</string>
+        <string name="settings_appearance">Giao diện</string>
     <string name="settings_floating_opacity">Độ trong suốt</string>
     <string name="settings_min">Tối thiểu</string>
     <string name="settings_max">Tối đa</string>

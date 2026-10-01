@@ -187,7 +187,7 @@
         <item quantity="one">%1$d nieuw</item>
         <item quantity="other">%1$d nieuw</item>
         </plurals>
-        <string name="settings_general">Algemeen</string>
+        <string name="settings_appearance">Weergave</string>
     <string name="settings_floating_opacity">Transparantie</string>
     <string name="settings_min">Min</string>
     <string name="settings_max">Max</string>

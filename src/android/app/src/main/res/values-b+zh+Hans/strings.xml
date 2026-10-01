@@ -184,7 +184,7 @@
     <plurals name="new_results_format">
         <item quantity="other">%1$d 个新结果</item>
         </plurals>
-        <string name="settings_general">通用</string>
+        <string name="settings_appearance">外观</string>
     <string name="settings_floating_opacity">透明度</string>
     <string name="settings_min">最低</string>
     <string name="settings_max">最高</string>

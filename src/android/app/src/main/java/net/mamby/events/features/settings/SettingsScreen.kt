@@ -51,7 +51,7 @@ fun SettingsScreen(
     val themeLabels = viewModel.themeOptions(language, systemDarkTheme)
     val themeIds = listOf(AppThemePreference.System, AppThemePreference.Light, AppThemePreference.Dark)
     val mediaIcon = ImageVector.vectorResource(R.drawable.icon_settings_media)
-    val generalTitle = stringResource(R.string.settings_general)
+    val appearanceTitle = stringResource(R.string.settings_appearance)
     val about = appInfo()
     val catalog = androidKitSettingsCatalog(search = AndroidKitSettingsSearchConfiguration(
         onOpenSearch = { searchVisible = true },
@@ -70,7 +70,7 @@ fun SettingsScreen(
                     icon = mediaIcon,
                 )
             }
-            section(key = "general", label = generalTitle) {
+            section(key = "language") {
                 language(AndroidKitLanguageSetting(
                     selection = AndroidKitSettingsSelection(
                         options = languageIds.drop(1).zip(languageLabels.drop(1)) { id, label -> AndroidKitSettingsOption(id, label) },
@@ -82,6 +82,8 @@ fun SettingsScreen(
                         ),
                     ),
                 ))
+            }
+            section(key = "appearance", label = appearanceTitle) {
                 theme(AndroidKitSettingsSelection(
                     options = themeIds.drop(1).zip(themeLabels.drop(1)) { id, label -> AndroidKitSettingsOption(id.name, label) },
                     selectedId = ui.settings.themePreference.name,

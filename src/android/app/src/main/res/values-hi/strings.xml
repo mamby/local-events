@@ -187,7 +187,7 @@
         <item quantity="one">%1$d नए</item>
         <item quantity="other">%1$d नए</item>
         </plurals>
-        <string name="settings_general">सामान्य</string>
+        <string name="settings_appearance">दिखावट</string>
     <string name="settings_floating_opacity">पारदर्शिता</string>
     <string name="settings_min">न्यूनतम</string>
     <string name="settings_max">अधिकतम</string>

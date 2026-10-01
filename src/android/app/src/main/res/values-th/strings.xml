@@ -184,7 +184,7 @@
     <plurals name="new_results_format">
         <item quantity="other">ใหม่ %1$d รายการ</item>
         </plurals>
-        <string name="settings_general">ทั่วไป</string>
+        <string name="settings_appearance">รูปลักษณ์</string>
     <string name="settings_floating_opacity">ความโปร่งใส</string>
     <string name="settings_min">ต่ำสุด</string>
     <string name="settings_max">สูงสุด</string>

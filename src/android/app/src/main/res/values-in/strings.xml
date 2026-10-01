@@ -184,7 +184,7 @@
     <plurals name="new_results_format">
         <item quantity="other">%1$d baru</item>
         </plurals>
-        <string name="settings_general">Umum</string>
+        <string name="settings_appearance">Tampilan</string>
     <string name="settings_floating_opacity">Transparansi</string>
     <string name="settings_min">Min</string>
     <string name="settings_max">Maks</string>
