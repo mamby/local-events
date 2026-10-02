@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
+    <string name="settings_save_failed">Không thể tải hoặc lưu cài đặt. Vui lòng thử lại.</string>
     <string name="about_label">Giới thiệu</string>
     <string name="accessible_for_age_filter_format">Có thể truy cập ở độ tuổi %1$s</string>
     <string name="accessibility_filter_format">Khả năng truy cập: %1$s</string>

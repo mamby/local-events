@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
+    <string name="settings_save_failed">Ayarlar yüklenemedi veya kaydedilemedi. Tekrar deneyin.</string>
     <string name="about_label">Hakkında</string>
     <string name="accessible_for_age_filter_format">%1$s yaşında erişilebilir</string>
     <string name="accessibility_filter_format">Erişilebilirlik: %1$s</string>

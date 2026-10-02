@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="settings_save_failed">Unable to load or save settings. Try again.</string>
     <string name="about_label">About</string>
     <string name="accessible_for_age_filter_format">Accessible at age %1$s</string>
     <string name="accessibility_filter_format">Accessibility: %1$s</string>

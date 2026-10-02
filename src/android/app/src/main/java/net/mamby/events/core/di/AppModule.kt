@@ -8,6 +8,9 @@ import dagger.hilt.components.SingletonComponent
 import android.content.Context
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.stringPreferencesKey
+import androidx.datastore.preferences.core.booleanPreferencesKey
+import androidx.core.app.LocaleManagerCompat
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.android.Android
 import io.ktor.client.plugins.HttpTimeout
@@ -44,6 +47,11 @@ import net.mamby.events.core.SettingsStore
 import net.mamby.events.core.TelemetryRecorder
 import net.mamby.events.core.TelemetryRepository
 import net.mamby.events.core.localEventsDataStore
+import net.mamby.androidkit.compose.form.AndroidKitSettingsStore
+import net.mamby.androidkit.compose.form.AndroidKitSettingsStoreMigration
+import net.mamby.androidkit.compose.form.AndroidKitSettingsStorageProtection
+import net.mamby.androidkit.compose.form.AndroidKitSearchHistorySnapshot
+import kotlinx.coroutines.flow.first
 import dagger.hilt.android.qualifiers.ApplicationContext
 
 @Qualifier
@@ -65,9 +73,36 @@ object AppModule {
     @Provides
     @Singleton
     fun providePreferencesDataStore(
-        @ApplicationContext context: Context
+        store: AndroidKitSettingsStore
     ): DataStore<Preferences> =
-        context.localEventsDataStore
+        store.preferences
+
+    @Provides
+    @Singleton
+    fun provideKitSettingsStore(@ApplicationContext context: Context): AndroidKitSettingsStore =
+        AndroidKitSettingsStore.open(context, "settings", AndroidKitSettingsStorageProtection.Plaintext,
+            listOf(object : AndroidKitSettingsStoreMigration {
+                override val id = "local-events-preferences-v1"
+                override suspend fun readPreferences(): Preferences {
+                    val preferences = context.localEventsDataStore.data.first().toMutablePreferences()
+                    val legacyLanguage = when (preferences[stringPreferencesKey("settings.language")]) {
+                        "English" -> "en"
+                        "French" -> "fr"
+                        "Arabic" -> "ar"
+                        else -> "system"
+                    }
+                    preferences[stringPreferencesKey("selected_language_tag")] =
+                        LocaleManagerCompat.getApplicationLocales(context).get(0)?.language ?: legacyLanguage
+                    val autoplay = booleanPreferencesKey("settings.mediaAutoplayEnabled")
+                    if (preferences[autoplay] == null) {
+                        preferences[autoplay] = preferences[booleanPreferencesKey("settings.audioAutoplayEnabled")] ?: false
+                    }
+                    return preferences.toPreferences()
+                }
+                override suspend fun readHistories(): Map<String, AndroidKitSearchHistorySnapshot> = emptyMap()
+                override suspend fun cleanUp() = Unit
+            }),
+        )
 
     @Provides
     @Singleton

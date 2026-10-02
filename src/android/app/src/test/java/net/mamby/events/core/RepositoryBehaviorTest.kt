@@ -1,30 +1,32 @@
 package net.mamby.events.core
 
 import androidx.datastore.core.DataStore
+import androidx.datastore.core.okio.OkioStorage
 import androidx.datastore.preferences.core.PreferenceDataStoreFactory
 import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.PreferencesSerializer
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import java.io.File
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.plus
 import kotlinx.coroutines.test.TestScope
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
 import kotlinx.serialization.json.Json
 import net.mamby.events.testFeedItem
-import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TemporaryFolder
+import okio.FileSystem
+import okio.Path.Companion.toPath
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class RepositoryBehaviorTest {
@@ -35,14 +37,6 @@ class RepositoryBehaviorTest {
         ignoreUnknownKeys = true
         encodeDefaults = true
         explicitNulls = false
-    }
-
-    private val stores = mutableListOf<DataStore<Preferences>>()
-    private val scopes = mutableListOf<TestScope>()
-
-    @After
-    fun tearDown() {
-        scopes.forEach { it.cancel() }
     }
 
     @Test
@@ -188,12 +182,16 @@ class RepositoryBehaviorTest {
         assertEquals(false, repository.settings.first().mediaAutoplayEnabled)
     }
 
-    private fun createDataStore(name: String): DataStore<Preferences> {
-        val scope = TestScope(UnconfinedTestDispatcher() + Job())
-        scopes += scope
-        val file = File(temporaryFolder.root, "$name.preferences_pb")
-        return PreferenceDataStoreFactory.create(scope = scope, produceFile = { file })
-            .also(stores::add)
+    private fun TestScope.createDataStore(name: String): DataStore<Preferences> {
+        val path = File(temporaryFolder.root, "$name.preferences_pb").absolutePath.toPath()
+        return PreferenceDataStoreFactory.create(
+            storage = OkioStorage(
+                fileSystem = FileSystem.SYSTEM,
+                serializer = PreferencesSerializer,
+                producePath = { path },
+            ),
+            scope = backgroundScope + UnconfinedTestDispatcher(testScheduler),
+        )
     }
 }
 

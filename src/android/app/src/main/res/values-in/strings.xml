@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
+    <string name="settings_save_failed">Pengaturan tidak dapat dimuat atau disimpan. Coba lagi.</string>
     <string name="about_label">Tentang</string>
     <string name="accessible_for_age_filter_format">Dapat diakses pada usia %1$s</string>
     <string name="accessibility_filter_format">Aksesibilitas: %1$s</string>

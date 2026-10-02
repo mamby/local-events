@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
+    <string name="settings_save_failed">Nie można wczytać ani zapisać ustawień. Spróbuj ponownie.</string>
     <string name="about_label">O aplikacji</string>
     <string name="accessible_for_age_filter_format">Dostępne w wieku %1$s</string>
     <string name="accessibility_filter_format">Dostępność: %1$s</string>

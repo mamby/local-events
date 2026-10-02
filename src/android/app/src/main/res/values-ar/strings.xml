@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
+    <string name="settings_save_failed">تعذّر تحميل الإعدادات أو حفظها. حاول مرة أخرى.</string>
     <string name="about_label">حول التطبيق</string>
     <string name="accessible_for_age_filter_format">متاح لعمر %1$s سنوات</string>
     <string name="accessibility_filter_format">إمكانية الوصول: %1$s</string>

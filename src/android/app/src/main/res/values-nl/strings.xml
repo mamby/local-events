@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
+    <string name="settings_save_failed">Instellingen kunnen niet worden geladen of opgeslagen. Probeer het opnieuw.</string>
     <string name="about_label">Over</string>
     <string name="accessible_for_age_filter_format">Toegankelijk op leeftijd %1$s</string>
     <string name="accessibility_filter_format">Toegankelijkheid: %1$s</string>

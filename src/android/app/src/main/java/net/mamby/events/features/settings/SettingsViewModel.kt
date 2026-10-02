@@ -14,6 +14,7 @@ import net.mamby.events.core.AppThemePreference
 import net.mamby.events.core.SettingsStore
 import net.mamby.events.core.SettingsState
 import net.mamby.events.core.SupportedAppLanguages
+import net.mamby.androidkit.compose.form.AndroidKitSettingsStore
 
 data class SettingsUiState(
     val settings: SettingsState = SettingsState()
@@ -21,6 +22,7 @@ data class SettingsUiState(
 
 @HiltViewModel
 class SettingsViewModel @Inject constructor(
+    val kitSettingsStore: AndroidKitSettingsStore,
     private val settingsRepository: SettingsStore,
     private val localizer: AppTextProvider
 ) : ViewModel() {

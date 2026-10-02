@@ -146,8 +146,13 @@ androidComponents {
 }
 
 dependencies {
+    constraints {
+        implementation("androidx.concurrent:concurrent-futures:1.2.0") {
+            because("Keep the app and AndroidX Test runtime classpaths on a compatible version.")
+        }
+    }
     val composeBom = platform("androidx.compose:compose-bom:2026.09.00")
-    val androidKitBom = platform("net.mamby.androidkit:bom:0.1.51-SNAPSHOT")
+    val androidKitBom = platform("net.mamby.androidkit:bom:0.1.52-SNAPSHOT")
     val lifecycleVersion = "2.11.0"
     val media3Version = "1.11.1"
     val navigationVersion = "2.10.2"
@@ -200,6 +205,7 @@ dependencies {
 
     testImplementation("junit:junit:4.13.2")
     testImplementation("androidx.datastore:datastore-preferences-core:1.2.1")
+    testImplementation("androidx.datastore:datastore-core-okio:1.2.1")
     testImplementation("io.ktor:ktor-client-mock:$ktorVersion")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.11.0")
 

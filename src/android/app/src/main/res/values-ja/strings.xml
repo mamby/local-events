@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
+    <string name="settings_save_failed">設定を読み込むか保存できませんでした。もう一度お試しください。</string>
     <string name="about_label">概要</string>
     <string name="accessible_for_age_filter_format">%1$s の年齢でアクセス可能</string>
     <string name="accessibility_filter_format">アクセシビリティ:%1$s</string>

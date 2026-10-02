@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
+    <string name="settings_save_failed">无法加载或保存设置。请重试。</string>
     <string name="about_label">关于</string>
     <string name="accessible_for_age_filter_format">年龄为 %1$s 即可访问</string>
     <string name="accessibility_filter_format">辅助功能：%1$s</string>

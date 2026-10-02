@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
+    <string name="settings_save_failed">सेटिंग लोड या सेव नहीं हो सकीं। फिर से कोशिश करें।</string>
     <string name="about_label">परिचय</string>
     <string name="accessible_for_age_filter_format">%1$s उम्र में पहुंच योग्य</string>
     <string name="accessibility_filter_format">अभिगम्यता: %1$s</string>

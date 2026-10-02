@@ -72,6 +72,13 @@ class SettingsRepository @Inject constructor(
     }
 
     override suspend fun migrateLegacyLanguagePreference() {
+        val savedLanguage = dataStore.data.first()[stringPreferencesKey("selected_language_tag")]
+        if (savedLanguage != null) {
+            appLocaleController.setSelectedLanguageTag(savedLanguage.takeUnless { it == "system" })
+            dataStore.edit { it.remove(LanguageKey) }
+            refreshLocaleState()
+            return
+        }
         if (appLocaleController.selectedLanguageTag() != null) {
             dataStore.edit { it.remove(LanguageKey) }
             refreshLocaleState()

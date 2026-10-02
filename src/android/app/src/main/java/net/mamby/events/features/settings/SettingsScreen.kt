@@ -8,6 +8,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.remember
+import android.widget.Toast
+import androidx.datastore.preferences.core.stringPreferencesKey
+import androidx.datastore.preferences.core.floatPreferencesKey
+import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -38,8 +43,9 @@ fun SettingsScreen(
     viewModel: SettingsViewModel = hiltViewModel(),
 ) {
     var searchVisible by rememberSaveable { mutableStateOf(false) }
-    var recentQueries by rememberSaveable { mutableStateOf(emptyList<String>()) }
-    var recentQueriesVisible by rememberSaveable { mutableStateOf(true) }
+    val history = remember(viewModel.kitSettingsStore) { viewModel.kitSettingsStore.searchHistory("settings") }
+    val context = LocalContext.current
+    val failureMessage = stringResource(R.string.settings_save_failed)
     BackHandler(enabled = searchVisible) {
         searchVisible = false
     }
@@ -55,17 +61,15 @@ fun SettingsScreen(
     val about = appInfo()
     val catalog = androidKitSettingsCatalog(search = AndroidKitSettingsSearchConfiguration(
         onOpenSearch = { searchVisible = true },
-        recentQueries = recentQueries,
-        onRecentQueriesChange = { recentQueries = it },
-        recentQueriesVisible = recentQueriesVisible,
-        onRecentQueriesVisibleChange = { recentQueriesVisible = it },
+        history = history,
+        onStorageFailure = { Toast.makeText(context, failureMessage, Toast.LENGTH_LONG).show() },
     )) {
         main(key = MainSettingsPageKey, title = viewModel.string("SettingsTitle", language)) {
             section(key = "media", label = viewModel.string("MediaLabel", language)) {
                 toggle(
                     key = "autoplay",
                     label = viewModel.string("AutoplayLabel", language),
-                    checked = ui.settings.mediaAutoplayEnabled,
+                    persistence = viewModel.kitSettingsStore.setting(booleanPreferencesKey("settings.mediaAutoplayEnabled"), false),
                     onCheckedChange = viewModel::setMediaAutoplayEnabled,
                     icon = mediaIcon,
                 )
@@ -73,8 +77,8 @@ fun SettingsScreen(
             section(key = "language") {
                 language(AndroidKitLanguageSetting(
                     selection = AndroidKitSettingsSelection(
+                        persistence = viewModel.kitSettingsStore.setting(stringPreferencesKey("selected_language_tag"), ui.settings.selectedLanguageTag ?: "system"),
                         options = languageIds.drop(1).zip(languageLabels.drop(1)) { id, label -> AndroidKitSettingsOption(id, label) },
-                        selectedId = ui.settings.selectedLanguageTag?.takeIf { it in languageIds } ?: "system",
                         onSelected = { viewModel.setLanguageIndex(languageIds.indexOf(it)) },
                         systemOption = AndroidKitSettingsSystemOption(
                             id = "system",
@@ -85,8 +89,8 @@ fun SettingsScreen(
             }
             section(key = "appearance", label = appearanceTitle) {
                 theme(AndroidKitSettingsSelection(
+                    persistence = viewModel.kitSettingsStore.setting(stringPreferencesKey("settings.theme"), AppThemePreference.System.name),
                     options = themeIds.drop(1).zip(themeLabels.drop(1)) { id, label -> AndroidKitSettingsOption(id.name, label) },
-                    selectedId = ui.settings.themePreference.name,
                     onSelected = { id -> viewModel.setThemeIndex(themeIds.indexOfFirst { it.name == id }) },
                     systemOption = AndroidKitSettingsSystemOption(
                         id = AppThemePreference.System.name,
@@ -94,7 +98,7 @@ fun SettingsScreen(
                     ),
                 ))
                 transparency(AndroidKitFloatingOpacitySetting(
-                    value = ui.settings.floatingSurfaceOpacityLevel,
+                    persistence = viewModel.kitSettingsStore.setting(floatPreferencesKey("settings.floatingSurfaceOpacityLevel"), net.mamby.androidkit.compose.theme.AndroidKitFloatingSurfaceDefaults.DefaultOpacityLevel),
                     onValueChange = viewModel::previewFloatingSurfaceOpacityLevel,
                     onValueChangeFinished = { viewModel.saveFloatingSurfaceOpacityLevel() },
                 ))
@@ -110,10 +114,11 @@ fun SettingsScreen(
 }
 
 @Composable
-fun AppInfoScreen(onBack: () -> Unit) {
+fun AppInfoScreen(onBack: () -> Unit, viewModel: SettingsViewModel = hiltViewModel()) {
     var searchVisible by rememberSaveable { mutableStateOf(false) }
-    var recentQueries by rememberSaveable { mutableStateOf(emptyList<String>()) }
-    var recentQueriesVisible by rememberSaveable { mutableStateOf(true) }
+    val history = remember(viewModel.kitSettingsStore) { viewModel.kitSettingsStore.searchHistory("about") }
+    val context = LocalContext.current
+    val failureMessage = stringResource(R.string.settings_save_failed)
     BackHandler(enabled = searchVisible) {
         searchVisible = false
     }
@@ -121,10 +126,8 @@ fun AppInfoScreen(onBack: () -> Unit) {
     val about = appInfo()
     val catalog = androidKitSettingsCatalog(search = AndroidKitSettingsSearchConfiguration(
         onOpenSearch = { searchVisible = true },
-        recentQueries = recentQueries,
-        onRecentQueriesChange = { recentQueries = it },
-        recentQueriesVisible = recentQueriesVisible,
-        onRecentQueriesVisibleChange = { recentQueriesVisible = it },
+        history = history,
+        onStorageFailure = { Toast.makeText(context, failureMessage, Toast.LENGTH_LONG).show() },
     )) {
         main(key = MainSettingsPageKey, title = title)
         about(key = AboutSettingsPageKey, content = about, onOpen = {})

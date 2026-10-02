@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
+    <string name="settings_save_failed">Einstellungen konnten nicht geladen oder gespeichert werden. Bitte erneut versuchen.</string>
     <string name="about_label">Info</string>
     <string name="accessible_for_age_filter_format">Zugänglich im Alter %1$s</string>
     <string name="accessibility_filter_format">Zugänglichkeit: %1$s</string>

@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
+    <string name="settings_save_failed">Impossible de charger ou d’enregistrer les paramètres. Réessayez.</string>
     <string name="about_label">À propos</string>
     <string name="accessible_for_age_filter_format">Accessible à %1$s ans</string>
     <string name="accessibility_filter_format">Accessibilité : %1$s</string>

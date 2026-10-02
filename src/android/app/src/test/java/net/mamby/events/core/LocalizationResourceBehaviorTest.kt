@@ -1,6 +1,7 @@
 package net.mamby.events.core
 
 import java.io.File
+import java.util.Locale
 import javax.xml.parsers.DocumentBuilderFactory
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
@@ -36,6 +37,7 @@ class LocalizationResourceBehaviorTest {
     fun supportedLanguages_matchLocalizedResourceDirectories() {
         val resourceLanguages = localizedValueDirectories()
             .mapNotNull { it.name.toLanguageTagOrNull() }
+            .map { Locale.forLanguageTag(it).toLanguageTag() }
             .plus("en")
             .sorted()
         val supportedLanguages = SupportedAppLanguages.map { it.tag }.sorted()
