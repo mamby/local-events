@@ -894,7 +894,6 @@ private fun SearchSheet(
         backContentDescription = viewModel.string("BackDescription"),
         maxHeightFraction = LocalEventsDimens.FeedSheetMaxHeightFraction,
         scrollMode = AndroidKitBottomSheetScrollMode.ContentManaged,
-        contentBottomPadding = 0.dp,
         gesturesEnabled = !ui.isSearchApplying,
         dismissGesturesEnabled = sheetDismissGesturesEnabled,
         closeContentDescription = viewModel.string("Close"),

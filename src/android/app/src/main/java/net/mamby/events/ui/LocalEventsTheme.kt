@@ -16,7 +16,9 @@ import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.em
 import androidx.compose.ui.unit.sp
-import net.mamby.androidkit.compose.theme.AndroidKitBottomSheetStyle
+import net.mamby.androidkit.compose.theme.AndroidKitBottomSheetColors
+import net.mamby.androidkit.compose.theme.AndroidKitComponentColors
+import net.mamby.androidkit.compose.theme.AndroidKitSectionCardColors
 import net.mamby.androidkit.compose.theme.AndroidKitTheme
 import net.mamby.androidkit.compose.theme.AndroidKitThemeDefinition
 import net.mamby.androidkit.compose.theme.AndroidKitThemes
@@ -204,24 +206,25 @@ fun LocalEventsTheme(
         floatingSurfaceOpacityLevel = floatingSurfaceOpacityLevel,
         colorScheme = colors,
         isDark = darkTheme,
-        typography = typography
     )
     val definition = baseDefinition.copy(
-        pageStyle = componentTheme.pageStyle,
-        bottomSheetStyle = AndroidKitBottomSheetStyle(
-            containerColor = if (darkTheme) LocalEventsColors.BottomSheetSurfaceDark else LocalEventsColors.BottomSheetSurfaceLight,
-            contentColor = if (darkTheme) LocalEventsColors.FeedTextPrimary else LocalEventsColors.EventDetailsTextPrimaryLight,
-            dragHandleColor = if (darkTheme) LocalEventsColors.FeedTextMuted else Color(0xFFC1C7D2),
-            scrimColor = LocalEventsColors.BlackScrim
-        ),
-        settingSectionStyle = baseDefinition.settingSectionStyle.copy(
-            containerColor = if (darkTheme) LocalEventsColors.AppElevatedSurfaceDark else LocalEventsColors.AppElevatedSurfaceLight
+        componentColors = AndroidKitComponentColors(
+            page = componentTheme.componentColors.page.copy(containerColor = componentTheme.colorScheme.background),
+            bottomSheet = AndroidKitBottomSheetColors(
+                containerColor = if (darkTheme) LocalEventsColors.BottomSheetSurfaceDark else LocalEventsColors.BottomSheetSurfaceLight,
+                contentColor = if (darkTheme) LocalEventsColors.FeedTextPrimary else LocalEventsColors.EventDetailsTextPrimaryLight,
+                dragHandleColor = if (darkTheme) LocalEventsColors.FeedTextMuted else Color(0xFFC1C7D2),
+                scrimColor = LocalEventsColors.BlackScrim
+            ),
+            sectionCard = AndroidKitSectionCardColors(
+                containerColor = if (darkTheme) LocalEventsColors.AppElevatedSurfaceDark else LocalEventsColors.AppElevatedSurfaceLight
+            )
         )
     )
 
     AndroidKitTheme(
         definition = definition,
-        content = content
+        content = { MaterialTheme(colorScheme = colors, typography = typography, content = content) }
     )
 }
 
