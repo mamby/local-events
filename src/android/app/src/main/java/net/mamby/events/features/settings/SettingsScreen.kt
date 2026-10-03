@@ -5,10 +5,6 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
-import androidx.compose.runtime.remember
 import android.widget.Toast
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.core.floatPreferencesKey
@@ -26,7 +22,7 @@ import net.mamby.androidkit.compose.form.AndroidKitSettingsAbout
 import net.mamby.androidkit.compose.form.AndroidKitSettingsLink
 import net.mamby.androidkit.compose.form.AndroidKitSettingsOption
 import net.mamby.androidkit.compose.form.AndroidKitSettingsPage
-import net.mamby.androidkit.compose.form.AndroidKitSettingsSearchConfiguration
+import net.mamby.androidkit.compose.form.AndroidKitSettings
 import net.mamby.androidkit.compose.form.AndroidKitSettingsSearchPage
 import net.mamby.androidkit.compose.form.AndroidKitSettingsSelection
 import net.mamby.androidkit.compose.form.AndroidKitSettingsSystemOption
@@ -37,18 +33,14 @@ import net.mamby.events.core.AppThemePreference
 import net.mamby.events.core.SupportedAppLanguages
 
 @Composable
-fun SettingsScreen(
-    onBack: () -> Unit,
+fun SettingsScope(
     onAppInfo: () -> Unit,
+    onOpenSearch: () -> Unit,
     viewModel: SettingsViewModel = hiltViewModel(),
+    content: @Composable () -> Unit,
 ) {
-    var searchVisible by rememberSaveable { mutableStateOf(false) }
-    val history = remember(viewModel.kitSettingsStore) { viewModel.kitSettingsStore.searchHistory("settings") }
     val context = LocalContext.current
     val failureMessage = stringResource(R.string.settings_save_failed)
-    BackHandler(enabled = searchVisible) {
-        searchVisible = false
-    }
     val ui by viewModel.state.collectAsStateWithLifecycle()
     val language = ui.settings.effectiveLanguage
     val languageLabels = viewModel.languageOptions(language, ui.settings.systemLanguageTag)
@@ -59,11 +51,7 @@ fun SettingsScreen(
     val mediaIcon = ImageVector.vectorResource(R.drawable.icon_settings_media)
     val appearanceTitle = stringResource(R.string.settings_appearance)
     val about = appInfo()
-    val catalog = androidKitSettingsCatalog(search = AndroidKitSettingsSearchConfiguration(
-        onOpenSearch = { searchVisible = true },
-        history = history,
-        onStorageFailure = { Toast.makeText(context, failureMessage, Toast.LENGTH_LONG).show() },
-    )) {
+    val catalog = androidKitSettingsCatalog {
         main(key = MainSettingsPageKey, title = viewModel.string("SettingsTitle", language)) {
             section(key = "media", label = viewModel.string("MediaLabel", language)) {
                 toggle(
@@ -106,36 +94,28 @@ fun SettingsScreen(
         }
         about(key = AboutSettingsPageKey, content = about, onOpen = onAppInfo)
     }
-    if (searchVisible) {
-        AndroidKitSettingsSearchPage(catalog = catalog, onBack = { searchVisible = false })
-    } else {
-        AndroidKitSettingsPage(catalog = catalog, pageKey = MainSettingsPageKey, onBack = onBack)
-    }
+    AndroidKitSettings(catalog, viewModel.kitSettingsStore, onOpenSearch,
+        onStorageFailure = { Toast.makeText(context, failureMessage, Toast.LENGTH_LONG).show() },
+        content = content)
 }
 
 @Composable
-fun AppInfoScreen(onBack: () -> Unit, viewModel: SettingsViewModel = hiltViewModel()) {
-    var searchVisible by rememberSaveable { mutableStateOf(false) }
-    val history = remember(viewModel.kitSettingsStore) { viewModel.kitSettingsStore.searchHistory("about") }
-    val context = LocalContext.current
-    val failureMessage = stringResource(R.string.settings_save_failed)
-    BackHandler(enabled = searchVisible) {
-        searchVisible = false
-    }
-    val title = stringResource(R.string.settings_title)
-    val about = appInfo()
-    val catalog = androidKitSettingsCatalog(search = AndroidKitSettingsSearchConfiguration(
-        onOpenSearch = { searchVisible = true },
-        history = history,
-        onStorageFailure = { Toast.makeText(context, failureMessage, Toast.LENGTH_LONG).show() },
-    )) {
-        main(key = MainSettingsPageKey, title = title)
-        about(key = AboutSettingsPageKey, content = about, onOpen = {})
-    }
+fun SettingsScreen(onBack: () -> Unit, searchVisible: Boolean, onCloseSearch: () -> Unit) {
+    SettingsDestination(MainSettingsPageKey, onBack, searchVisible, onCloseSearch)
+}
+
+@Composable
+fun AppInfoScreen(onBack: () -> Unit, searchVisible: Boolean, onCloseSearch: () -> Unit) {
+    SettingsDestination(AboutSettingsPageKey, onBack, searchVisible, onCloseSearch)
+}
+
+@Composable
+private fun SettingsDestination(pageKey: String, onBack: () -> Unit, searchVisible: Boolean, onCloseSearch: () -> Unit) {
+    BackHandler(enabled = searchVisible, onBack = onCloseSearch)
     if (searchVisible) {
-        AndroidKitSettingsSearchPage(catalog = catalog, onBack = { searchVisible = false })
+        AndroidKitSettingsSearchPage(onBack = onCloseSearch)
     } else {
-        AndroidKitSettingsPage(catalog = catalog, pageKey = AboutSettingsPageKey, onBack = onBack)
+        AndroidKitSettingsPage(pageKey = pageKey, onBack = onBack)
     }
 }
 
