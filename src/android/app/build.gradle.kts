@@ -147,7 +147,7 @@ androidComponents {
 
 dependencies {
     constraints {
-        implementation("androidx.concurrent:concurrent-futures:1.2.0") {
+        implementation("androidx.concurrent:concurrent-futures:1.3.0") {
             because("Keep the app and AndroidX Test runtime classpaths on a compatible version.")
         }
     }
