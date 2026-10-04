@@ -11,7 +11,14 @@ dependencyResolutionManagement {
     repositories {
         exclusiveContent {
             forRepository {
-                mavenLocal()
+                if (providers.gradleProperty("androidKitUseMavenLocal").getOrElse("false").toBoolean()) {
+                    mavenLocal()
+                } else {
+                    maven {
+                        name = "AndroidKit"
+                        url = uri("https://mamby.github.io/android-kit-docs/maven/")
+                    }
+                }
             }
             filter {
                 includeGroup("net.mamby.androidkit")

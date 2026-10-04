@@ -30,3 +30,16 @@ This public repository contains native client applications and the backend contr
 Implement the [public backend contract](docs/backend-contract.md) using any stack or event sources, then configure the client with your service's base URL. The [OpenAPI document](docs/api/openapi.v1.json) defines the current endpoints and schemas. Access to the private reference implementation is not required.
 
 The current reference feed is a development/demo feed. The contract guide distinguishes its behavior from requirements for interoperable implementations.
+
+## Android Kit distribution
+
+Android builds now use Android Kit `0.1.53` from its public
+[Maven repository](https://mamby.github.io/android-kit-docs/maven/).
+This replaces the earlier Maven Local prerequisite. No private Kit checkout or
+GitHub credentials are required. See [installation](https://mamby.github.io/android-kit-docs/installation/).
+Private snapshot development can opt in with `-PandroidKitUseMavenLocal=true`
+and `-PandroidKitVersion=<published-local-snapshot>`.
+
+The Android workflow uses the repository variable `LOCAL_EVENTS_API_DEV` for
+the existing backend URL. Kit license notices are included in the application
+assets under `androidkit/`; the host remains MIT licensed.

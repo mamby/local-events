@@ -41,3 +41,12 @@ Only `dev` has a debug variant; beta, stage, and prod use release variants. Conf
 ```
 
 Device tests use `:app:connectedDevDebugAndroidTest`. See [the backend contract](../../docs/backend-contract.md) for response schemas.
+
+## Updated Android Kit prerequisite
+
+The Maven Local prerequisite above is superseded. This project now downloads
+Android Kit `0.1.53` from the public [Kit Maven repository](https://mamby.github.io/android-kit-docs/maven/).
+No Kit implementation checkout is needed. Maven Local is an explicit development
+opt-in using `-PandroidKitUseMavenLocal=true -PandroidKitVersion=<local-version>`.
+The committed resource validator and packaged MIT/third-party notices match the
+public release. GitHub Actions builds use the public repository exclusively.
