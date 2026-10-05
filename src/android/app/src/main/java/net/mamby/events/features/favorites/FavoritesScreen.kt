@@ -4,11 +4,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.calculateEndPadding
-import androidx.compose.foundation.layout.calculateStartPadding
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -26,14 +23,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import net.mamby.androidkit.compose.layout.AndroidKitPage
-import net.mamby.androidkit.compose.theme.AndroidKitThemeTokens
 import net.mamby.events.core.AppThemePreference
 import net.mamby.events.core.EventFeedItem
 import net.mamby.events.ui.AttendanceSummaryRow
@@ -54,7 +49,6 @@ fun FavoritesScreen(
         AppThemePreference.Dark -> true
         AppThemePreference.System -> androidx.compose.foundation.isSystemInDarkTheme()
     }
-    val horizontalContentPadding = AndroidKitThemeTokens.dimensions.screenPadding
 
     AndroidKitPage(
         title = viewModel.string("FavoritesTitle"),
@@ -65,8 +59,7 @@ fun FavoritesScreen(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(pagePadding)
-                    .padding(horizontal = horizontalContentPadding),
+                    .padding(pagePadding),
                 horizontalAlignment = Alignment.Start,
                 verticalArrangement = Arrangement.Center
             ) {
@@ -87,15 +80,9 @@ fun FavoritesScreen(
             return@AndroidKitPage
         }
 
-        val layoutDirection = LocalLayoutDirection.current
         LazyColumn(
             modifier = Modifier.fillMaxSize(),
-            contentPadding = PaddingValues(
-                start = pagePadding.calculateStartPadding(layoutDirection) + horizontalContentPadding,
-                top = pagePadding.calculateTopPadding(),
-                end = pagePadding.calculateEndPadding(layoutDirection) + horizontalContentPadding,
-                bottom = pagePadding.calculateBottomPadding()
-            ),
+            contentPadding = pagePadding,
             verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
             items(ui.items, key = { it.id }) { item ->
