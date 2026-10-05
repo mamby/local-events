@@ -116,6 +116,7 @@ import net.mamby.androidkit.compose.action.AndroidKitActionFlyout
 import net.mamby.androidkit.compose.action.AndroidKitActionFlyoutHorizontalAlignment
 import net.mamby.androidkit.compose.form.AndroidKitBottomSheet
 import net.mamby.androidkit.compose.form.AndroidKitBottomSheetScrollMode
+import net.mamby.androidkit.compose.form.AndroidKitStatusBarContent
 import net.mamby.events.core.EventFeedItem
 import net.mamby.events.core.FeedFilterChip
 import net.mamby.events.core.FeedFilterKind
@@ -878,6 +879,7 @@ private fun SearchSheet(
 
     AndroidKitBottomSheet(
         visible = visible,
+        statusBarContent = AndroidKitStatusBarContent.Light,
         title = viewModel.string(
             when (ui.searchSheetPage) {
                 FeedSearchSheetPage.Search -> "FindEvents"
@@ -1957,6 +1959,7 @@ private fun DetailsSheet(
 ) {
     AndroidKitBottomSheet(
         visible = item != null,
+        statusBarContent = AndroidKitStatusBarContent.Light,
         title = viewModel.string("EventDetailsDescription"),
         onDismiss = onDismiss,
         maxHeightFraction = 0.85f,

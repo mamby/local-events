@@ -2,7 +2,6 @@ package net.mamby.events
 
 import android.os.Bundle
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
@@ -10,16 +9,19 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.core.view.WindowCompat
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
 import net.mamby.events.core.AppThemePreference
@@ -44,11 +46,19 @@ class MainActivity : AppCompatActivity() {
         splashScreen.setKeepOnScreenCondition {
             !initialFeedViewModel.state.value.hasCompletedInitialCacheRead
         }
-        enableEdgeToEdge()
+        WindowCompat.enableEdgeToEdge(window)
 
         setContent {
-            LocalEventsApp(feedViewModel = initialFeedViewModel)
+            LocalEventsApp(
+                feedViewModel = initialFeedViewModel,
+                onStatusBarThemeChanged = ::applyStatusBarAppearance,
+            )
         }
+    }
+
+    private fun applyStatusBarAppearance(isDarkTheme: Boolean) {
+        WindowCompat.getInsetsController(window, window.decorView)
+            .isAppearanceLightStatusBars = !isDarkTheme
     }
 }
 
@@ -62,6 +72,7 @@ private object AppRoute {
 @Composable
 private fun LocalEventsApp(
     feedViewModel: FeedViewModel,
+    onStatusBarThemeChanged: (Boolean) -> Unit,
     rootViewModel: RootViewModel = hiltViewModel()
 ) {
     val settings by rootViewModel.settings.collectAsStateWithLifecycle()
@@ -74,7 +85,13 @@ private fun LocalEventsApp(
     }
 
     val navController = rememberNavController()
+    val backStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = backStackEntry?.destination?.route ?: AppRoute.Feed
     var settingsSearchVisible by rememberSaveable { mutableStateOf(false) }
+
+    SideEffect {
+        onStatusBarThemeChanged(darkTheme || currentRoute == AppRoute.Feed)
+    }
 
     LaunchedEffect(configurationLocaleTags) {
         rootViewModel.refreshLocaleState()
