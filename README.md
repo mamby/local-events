@@ -43,3 +43,5 @@ and `-PandroidKitVersion=<published-local-snapshot>`.
 The Android workflow uses the repository variable `LOCAL_EVENTS_API_DEV` for
 the existing backend URL. Kit license notices are included in the application
 assets under `androidkit/`; the host remains MIT licensed.
+
+Current Android builds pin Android Kit `0.1.63`, with Maven Local disabled by default.
