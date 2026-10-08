@@ -50,3 +50,6 @@ No Kit implementation checkout is needed. Maven Local is an explicit development
 opt-in using `-PandroidKitUseMavenLocal=true -PandroidKitVersion=<local-version>`.
 The committed resource validator and packaged MIT/third-party notices match the
 public release. GitHub Actions builds use the public repository exclusively.
+
+The current pinned Android Kit release is `0.1.65`, downloaded from the public
+Maven repository with Maven Local disabled by default.

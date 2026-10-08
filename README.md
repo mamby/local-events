@@ -45,3 +45,6 @@ the existing backend URL. Kit license notices are included in the application
 assets under `androidkit/`; the host remains MIT licensed.
 
 Current Android builds pin Android Kit `0.1.63`, with Maven Local disabled by default.
+
+Android Kit has been updated to `0.1.65` from the public Maven repository,
+with Maven Local disabled by default.
