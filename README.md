@@ -48,3 +48,6 @@ Current Android builds pin Android Kit `0.1.63`, with Maven Local disabled by de
 
 Android Kit has been updated to `0.1.65` from the public Maven repository,
 with Maven Local disabled by default.
+
+Android Kit has been updated to `0.1.67` from the public Maven repository,
+with Maven Local disabled by default.
