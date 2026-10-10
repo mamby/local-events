@@ -22,6 +22,7 @@ import net.mamby.events.core.AppThemePreference
 import net.mamby.events.core.SettingsState
 import net.mamby.events.core.SettingsStore
 import net.mamby.events.features.settings.SettingsScreen
+import net.mamby.events.features.settings.SettingsScope
 import net.mamby.events.features.settings.SettingsViewModel
 import net.mamby.events.ui.LocalEventsTheme
 import org.junit.Rule
@@ -42,11 +43,13 @@ class SettingsScreenBehaviorTest {
 
         composeRule.setContent {
             LocalEventsTheme(darkTheme = false) {
-                SettingsScreen(
+                SettingsScope(
                     onAppInfo = {},
-                    onBack = {},
+                    onOpenSearch = {},
                     viewModel = viewModel
-                )
+                ) {
+                    SettingsScreen(onBack = {}, searchVisible = false, onCloseSearch = {})
+                }
             }
         }
 
@@ -70,11 +73,13 @@ class SettingsScreenBehaviorTest {
 
         composeRule.setContent {
             LocalEventsTheme(darkTheme = false) {
-                SettingsScreen(
+                SettingsScope(
                     onAppInfo = {},
-                    onBack = {},
+                    onOpenSearch = {},
                     viewModel = viewModel
-                )
+                ) {
+                    SettingsScreen(onBack = {}, searchVisible = false, onCloseSearch = {})
+                }
             }
         }
 
@@ -107,7 +112,9 @@ class SettingsScreenBehaviorTest {
         )
         composeRule.setContent {
             LocalEventsTheme(darkTheme = false) {
-                SettingsScreen(onAppInfo = {}, onBack = {}, viewModel = viewModel)
+                SettingsScope(onAppInfo = {}, onOpenSearch = {}, viewModel = viewModel) {
+                    SettingsScreen(onBack = {}, searchVisible = false, onCloseSearch = {})
+                }
             }
         }
 
