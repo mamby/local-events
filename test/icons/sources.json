@@ -1,0 +1,7 @@
+{
+  "sources": {},
+  "vector_globs": [
+    "src/android/app/src/main/res/drawable*/**/*.xml"
+  ],
+  "vectors": {}
+}

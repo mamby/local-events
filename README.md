@@ -51,3 +51,6 @@ with Maven Local disabled by default.
 
 Android Kit has been updated to `0.1.67` from the public Maven repository,
 with Maven Local disabled by default.
+
+Android Kit has been updated to `0.1.69` from the public Maven repository,
+with Maven Local disabled by default and the bundled icon notices refreshed.
