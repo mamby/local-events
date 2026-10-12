@@ -10,6 +10,10 @@ This public repository contains native clients and the public backend contract o
 
 Use official platform APIs, declarative UI, lifecycle-aware state, and existing localization patterns. Preserve Kit-owned UI boundaries. Do not add tests unless requested. Existing Android JVM and instrumentation tests stay in their Gradle source sets.
 
+Keep AndroidKit presentation sealed. List summaries accept typed counts, domain
+quantity resources and active-filter labels; Kit owns composition, formatting,
+sort wording and accessibility output. Never rebuild those in the host.
+
 For icon conversions, preserve the upstream SVG geometry, viewport, stroke width,
 caps, joins, and element boundaries exactly. Keep each SVG element in a separate
 vector path, including elements with relative commands. Preserve intentional
