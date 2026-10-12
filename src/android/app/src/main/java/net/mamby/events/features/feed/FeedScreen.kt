@@ -87,6 +87,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
@@ -117,6 +118,7 @@ import net.mamby.androidkit.compose.action.AndroidKitActionFlyoutHorizontalAlign
 import net.mamby.androidkit.compose.form.AndroidKitBottomSheet
 import net.mamby.androidkit.compose.form.AndroidKitBottomSheetScrollMode
 import net.mamby.androidkit.compose.form.AndroidKitStatusBarContent
+import net.mamby.events.R
 import net.mamby.events.core.EventFeedItem
 import net.mamby.events.core.FeedFilterChip
 import net.mamby.events.core.FeedFilterKind
@@ -124,6 +126,7 @@ import net.mamby.events.core.FeedPriceFilter
 import net.mamby.events.core.MediaType
 import net.mamby.events.ui.FeedButton
 import net.mamby.events.ui.FeedIconButton
+import net.mamby.events.ui.feedFavoriteIconPainter
 import net.mamby.events.ui.AttendanceSummaryRow
 import net.mamby.events.ui.LocalEventsColors
 import net.mamby.events.ui.LocalEventsDimens
@@ -133,8 +136,6 @@ import net.mamby.events.ui.SvgIcon
 import net.mamby.events.ui.StateMessage
 import net.mamby.events.ui.shareText
 import net.mamby.androidkit.compose.action.AndroidKitFloatingAction
-import coil3.compose.rememberAsyncImagePainter
-import net.mamby.events.ui.iconAsset
 
 private val MinimumViewDuration = 1.seconds
 private val SearchPillCriterionDisplayDuration = 6.seconds
@@ -562,11 +563,11 @@ private fun FeedMenu(
     onOpenFavorites: () -> Unit,
     onOpenSettings: () -> Unit
 ) {
-    val favoriteIcon = rememberAsyncImagePainter(iconAsset("icon_favorite_off.svg"))
-    val settingsIcon = rememberAsyncImagePainter(iconAsset("icon_settings.svg"))
+    val favoriteIcon = painterResource(R.drawable.ic_lucide_bookmark)
+    val settingsIcon = painterResource(R.drawable.ic_lucide_settings)
     Box {
         FeedIconButton(
-            iconName = "icon_menu.svg",
+            icon = painterResource(R.drawable.ic_lucide_text_align_start),
             contentDescription = viewModel.string("MenuButtonDescription"),
             onClick = { onExpandedChange(!expanded) },
             iconSize = LocalEventsDimens.FeedSettingsIconSize
@@ -720,12 +721,12 @@ private fun FeedItemPage(
                 horizontalAlignment = Alignment.End
             ) {
                 FeedIconButton(
-                    iconName = "icon_details.svg",
+                    icon = painterResource(R.drawable.ic_lucide_square_text),
                     contentDescription = viewModel.string("EventDetailsDescription"),
                     onClick = onDetails
                 )
                 FeedIconButton(
-                    iconName = "icon_share.svg",
+                    icon = painterResource(R.drawable.ic_lucide_share_2),
                     contentDescription = viewModel.string("ShareEventDescription"),
                     onClick = {
                         viewModel.recordShareIntent(item)
@@ -733,14 +734,15 @@ private fun FeedItemPage(
                     }
                 )
                 FeedIconButton(
-                    iconName = if (item.isFavorited) "icon_favorite_on.svg" else "icon_favorite_off.svg",
+                    icon = feedFavoriteIconPainter(item.isFavorited),
+                    tint = if (item.isFavorited) LocalEventsColors.FeedAccent else LocalEventsColors.FeedTextPrimary,
                     contentDescription = viewModel.string(if (item.isFavorited) "RemoveFavoriteDescription" else "AddFavoriteDescription"),
                     onClick = onFavorite,
                     onLongClick = onOpenFavorites,
                     onLongClickLabel = viewModel.string("FavoritesCardHint")
                 )
                 FeedIconButton(
-                    iconName = if (playbackActive) "icon_pause.svg" else "icon_play.svg",
+                    icon = painterResource(if (playbackActive) R.drawable.ic_lucide_pause else R.drawable.ic_lucide_play),
                     contentDescription = viewModel.string(
                         when {
                             !item.media.hasPlayback -> "PlaybackUnavailableDescription"

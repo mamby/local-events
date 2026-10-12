@@ -1,7 +1,65 @@
 {
-  "sources": {},
+  "sources": {
+    "0ea8780434e2b4527dc860b18ff94883d080b59c/bookmark": {
+      "file": "upstream/0ea8780434e2b4527dc860b18ff94883d080b59c/bookmark.svg",
+      "revision": "0ea8780434e2b4527dc860b18ff94883d080b59c",
+      "url": "https://raw.githubusercontent.com/lucide-icons/lucide/0ea8780434e2b4527dc860b18ff94883d080b59c/icons/bookmark.svg",
+      "sha256": "1d5023760db81f21c3b5a63f012ef540acc01932731c733e4645012a876d39f4"
+    },
+    "0ea8780434e2b4527dc860b18ff94883d080b59c/settings": {
+      "file": "upstream/0ea8780434e2b4527dc860b18ff94883d080b59c/settings.svg",
+      "revision": "0ea8780434e2b4527dc860b18ff94883d080b59c",
+      "url": "https://raw.githubusercontent.com/lucide-icons/lucide/0ea8780434e2b4527dc860b18ff94883d080b59c/icons/settings.svg",
+      "sha256": "0ae27fd0f81999229e3127ac96c5b32edfea448e291d509e76212b917551d66b"
+    },
+    "70562c1ee1c4fdcf736fe97bc893fb8511927934/text-align-start": {
+      "file": "upstream/70562c1ee1c4fdcf736fe97bc893fb8511927934/text-align-start.svg",
+      "revision": "70562c1ee1c4fdcf736fe97bc893fb8511927934",
+      "url": "https://raw.githubusercontent.com/lucide-icons/lucide/70562c1ee1c4fdcf736fe97bc893fb8511927934/icons/text-align-start.svg",
+      "sha256": "db38ff88c40d3dfeb36c3112e24e1fab830f8c6cec47775ae928ca683897f0ff"
+    },
+    "70562c1ee1c4fdcf736fe97bc893fb8511927934/square-text": {
+      "file": "upstream/70562c1ee1c4fdcf736fe97bc893fb8511927934/square-text.svg",
+      "revision": "70562c1ee1c4fdcf736fe97bc893fb8511927934",
+      "url": "https://raw.githubusercontent.com/lucide-icons/lucide/70562c1ee1c4fdcf736fe97bc893fb8511927934/icons/square-text.svg",
+      "sha256": "6c7b7be3e3b5d2734a4907cd0c72fc90132473acaa54bca220b215e80a564c99"
+    },
+    "70562c1ee1c4fdcf736fe97bc893fb8511927934/share-2": {
+      "file": "upstream/70562c1ee1c4fdcf736fe97bc893fb8511927934/share-2.svg",
+      "revision": "70562c1ee1c4fdcf736fe97bc893fb8511927934",
+      "url": "https://raw.githubusercontent.com/lucide-icons/lucide/70562c1ee1c4fdcf736fe97bc893fb8511927934/icons/share-2.svg",
+      "sha256": "de283acf45610a564ade56bc55bb94e7cf4040bc942efe9163fd98cdfe07672c"
+    },
+    "70562c1ee1c4fdcf736fe97bc893fb8511927934/play": {
+      "file": "upstream/70562c1ee1c4fdcf736fe97bc893fb8511927934/play.svg",
+      "revision": "70562c1ee1c4fdcf736fe97bc893fb8511927934",
+      "url": "https://raw.githubusercontent.com/lucide-icons/lucide/70562c1ee1c4fdcf736fe97bc893fb8511927934/icons/play.svg",
+      "sha256": "d7c34786135922a92b6896f6c2384ceeb0346afbf6041dc79982011411409833"
+    },
+    "70562c1ee1c4fdcf736fe97bc893fb8511927934/pause": {
+      "file": "upstream/70562c1ee1c4fdcf736fe97bc893fb8511927934/pause.svg",
+      "revision": "70562c1ee1c4fdcf736fe97bc893fb8511927934",
+      "url": "https://raw.githubusercontent.com/lucide-icons/lucide/70562c1ee1c4fdcf736fe97bc893fb8511927934/icons/pause.svg",
+      "sha256": "f122ec4ea7f5693a0b1baafa9c708b53980dc87b4aacb297c6e6f71c1a4c115c"
+    },
+    "70562c1ee1c4fdcf736fe97bc893fb8511927934/square-play": {
+      "file": "upstream/70562c1ee1c4fdcf736fe97bc893fb8511927934/square-play.svg",
+      "revision": "70562c1ee1c4fdcf736fe97bc893fb8511927934",
+      "url": "https://raw.githubusercontent.com/lucide-icons/lucide/70562c1ee1c4fdcf736fe97bc893fb8511927934/icons/square-play.svg",
+      "sha256": "8a037501b1f41fb1b537daf5ded19a7e439e7aeef1492fbcf89a339ed541056d"
+    }
+  },
   "vector_globs": [
     "src/android/app/src/main/res/drawable*/**/*.xml"
   ],
-  "vectors": {}
+  "vectors": {
+    "src/android/app/src/main/res/drawable/ic_lucide_bookmark.xml": "0ea8780434e2b4527dc860b18ff94883d080b59c/bookmark",
+    "src/android/app/src/main/res/drawable/ic_lucide_settings.xml": "0ea8780434e2b4527dc860b18ff94883d080b59c/settings",
+    "src/android/app/src/main/res/drawable/ic_lucide_text_align_start.xml": "70562c1ee1c4fdcf736fe97bc893fb8511927934/text-align-start",
+    "src/android/app/src/main/res/drawable/ic_lucide_square_text.xml": "70562c1ee1c4fdcf736fe97bc893fb8511927934/square-text",
+    "src/android/app/src/main/res/drawable/ic_lucide_share_2.xml": "70562c1ee1c4fdcf736fe97bc893fb8511927934/share-2",
+    "src/android/app/src/main/res/drawable/ic_lucide_play.xml": "70562c1ee1c4fdcf736fe97bc893fb8511927934/play",
+    "src/android/app/src/main/res/drawable/ic_lucide_pause.xml": "70562c1ee1c4fdcf736fe97bc893fb8511927934/pause",
+    "src/android/app/src/main/res/drawable/ic_lucide_square_play.xml": "70562c1ee1c4fdcf736fe97bc893fb8511927934/square-play"
+  }
 }

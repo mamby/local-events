@@ -71,12 +71,12 @@ object LocalEventsDimens {
     val FeedOverlayBottomPadding = 10.dp
     val FeedActionColumnEndPadding = 0.dp
     val FeedActionButtonSize = 48.dp
-    val FeedActionIconSize = 26.dp
+    val FeedActionIconSize = 24.dp
     val FeedSearchPillRadius = 24.dp
     val FeedTopOverlayHorizontalPadding = 12.dp
     val FeedTopOverlayTopPadding = 8.dp
     val FeedTopOverlayControlSpacing = 6.dp
-    val FeedSettingsIconSize = 28.dp
+    val FeedSettingsIconSize = FeedActionIconSize
     val FeedTopOverlayEndPadding = FeedActionColumnEndPadding
     val FeedSheetBottomPadding = 20.dp
     const val FeedSheetMaxHeightFraction = 0.90f

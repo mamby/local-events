@@ -20,6 +20,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -29,6 +30,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalHapticFeedback
@@ -77,7 +79,7 @@ fun RemoteOrAssetImage(
 
 @Composable
 fun FeedIconButton(
-    iconName: String,
+    icon: Painter,
     contentDescription: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
@@ -86,7 +88,8 @@ fun FeedIconButton(
     onLongClickLabel: String? = null,
     targetWidth: Dp = LocalEventsDimens.FeedActionButtonSize,
     targetHeight: Dp = LocalEventsDimens.FeedActionButtonSize,
-    iconSize: Dp = LocalEventsDimens.FeedActionIconSize
+    iconSize: Dp = LocalEventsDimens.FeedActionIconSize,
+    tint: Color = LocalEventsColors.FeedTextPrimary
 ) {
     if (onLongClick == null) {
         IconButton(
@@ -100,11 +103,11 @@ fun FeedIconButton(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
             ) {
-                SvgIcon(
-                    name = iconName,
+                Icon(
+                    painter = icon,
                     contentDescription = null,
                     modifier = Modifier.size(iconSize),
-                    colorFilter = null
+                    tint = tint
                 )
             }
         }
@@ -129,11 +132,11 @@ fun FeedIconButton(
             ),
         contentAlignment = Alignment.Center
     ) {
-        SvgIcon(
-            name = iconName,
+        Icon(
+            painter = icon,
             contentDescription = null,
             modifier = Modifier.size(iconSize),
-            colorFilter = null
+            tint = tint
         )
     }
 }

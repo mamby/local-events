@@ -48,7 +48,7 @@ fun SettingsScope(
     val systemDarkTheme = isSystemInDarkTheme()
     val themeLabels = viewModel.themeOptions(language, systemDarkTheme)
     val themeIds = listOf(AppThemePreference.System, AppThemePreference.Light, AppThemePreference.Dark)
-    val mediaIcon = ImageVector.vectorResource(R.drawable.icon_settings_media)
+    val mediaIcon = ImageVector.vectorResource(R.drawable.ic_lucide_square_play)
     val appearanceTitle = stringResource(R.string.settings_appearance)
     val about = appInfo()
     val catalog = androidKitSettingsCatalog {
