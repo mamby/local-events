@@ -156,7 +156,7 @@ dependencies {
     val lifecycleVersion = "2.11.0"
     val media3Version = "1.11.1"
     val navigationVersion = "2.10.2"
-    val ktorVersion = "3.6.0"
+    val ktorVersion = "3.6.1"
     val coilVersion = "3.6.3"
 
     implementation(composeBom)
