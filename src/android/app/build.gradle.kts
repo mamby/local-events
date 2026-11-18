@@ -11,6 +11,7 @@ apply(from = rootProject.file("gradle/validate-androidkit-resources.gradle"))
 android {
     namespace = "net.mamby.events"
     compileSdk = 37
+    compileSdkMinor = 1
     ndkVersion = "30.0.16248370"
 
     defaultConfig {

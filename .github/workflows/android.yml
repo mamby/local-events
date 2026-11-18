@@ -31,7 +31,7 @@ jobs:
       - name: Install Android SDK packages
         run: |
           "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" \
-            "platforms;android-37.0" "build-tools;37.0.0" "ndk;30.0.16248370"
+            "platforms;android-37.1" "build-tools;37.0.0" "ndk;30.0.16248370"
       - name: Build with public Kit binaries
         run: |
           test -n "$LOCAL_EVENTS_API_DEV" || { echo "Set the LOCAL_EVENTS_API_DEV repository variable to your backend URL."; exit 1; }
