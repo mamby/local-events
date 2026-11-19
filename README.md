@@ -33,30 +33,12 @@ The current reference feed is a development/demo feed. The contract guide distin
 
 ## Android Kit distribution
 
-Android builds now use Android Kit `0.1.53` from its public
+The Android client downloads Android Kit from its public
 [Maven repository](https://mamby.github.io/android-kit-docs/maven/).
-This replaces the earlier Maven Local prerequisite. No private Kit checkout or
-GitHub credentials are required. See [installation](https://mamby.github.io/android-kit-docs/installation/).
-Private snapshot development can opt in with `-PandroidKitUseMavenLocal=true`
-and `-PandroidKitVersion=<published-local-snapshot>`.
+The `androidKitVersion` property in [gradle.properties](src/android/gradle.properties)
+pins the release. For local snapshot development, pass
+`-PandroidKitUseMavenLocal=true -PandroidKitVersion=<published-local-snapshot>` to Gradle.
 
 The Android workflow uses the repository variable `LOCAL_EVENTS_API_DEV` for
 the existing backend URL. Kit license notices are included in the application
 assets under `androidkit/`; the host remains MIT licensed.
-
-Current Android builds pin Android Kit `0.1.63`, with Maven Local disabled by default.
-
-Android Kit has been updated to `0.1.65` from the public Maven repository,
-with Maven Local disabled by default.
-
-Android Kit has been updated to `0.1.67` from the public Maven repository,
-with Maven Local disabled by default.
-
-Android Kit has been updated to `0.1.69` from the public Maven repository,
-with Maven Local disabled by default and the bundled icon notices refreshed.
-
-Android Kit has been updated to `0.1.75` from the public Maven repository,
-with Maven Local disabled by default.
-
-Android Kit has been updated to `0.1.76` from the public Maven repository,
-with Maven Local disabled by default.

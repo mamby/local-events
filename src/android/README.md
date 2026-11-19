@@ -7,7 +7,7 @@ Native Kotlin/Jetpack Compose client. Open this directory in Android Studio.
 - JDK 21 or a compatible newer JDK, configured through Android Studio's Gradle JDK or `JAVA_HOME`.
 - Android SDK platform 37 and NDK `30.0.16248370`, matching `app/build.gradle.kts`.
 - Use the committed Gradle wrapper. Plugin and dependency versions are pinned in the Gradle files.
-- AndroidKit `0.1.31-SNAPSHOT` must be published to Maven Local. The existing build resolves `net.mamby.androidkit` exclusively from Maven Local. Build/publish that snapshot from the [AndroidKit repository](https://github.com/mamby/android-kit) before building this app; it is not bundled here.
+- Gradle downloads the pinned Android Kit release from its public Maven repository. See [Android Kit distribution](../../README.md#android-kit-distribution) for the version pin and local snapshot override.
 - Configure your SDK with Android Studio, `ANDROID_HOME`, or an ignored `local.properties` containing `sdk.dir`.
 
 The repository does not pin a machine-specific JDK installation path.
@@ -41,15 +41,3 @@ Only `dev` has a debug variant; beta, stage, and prod use release variants. Conf
 ```
 
 Device tests use `:app:connectedDevDebugAndroidTest`. See [the backend contract](../../docs/backend-contract.md) for response schemas.
-
-## Updated Android Kit prerequisite
-
-The Maven Local prerequisite above is superseded. This project now downloads
-Android Kit `0.1.53` from the public [Kit Maven repository](https://mamby.github.io/android-kit-docs/maven/).
-No Kit implementation checkout is needed. Maven Local is an explicit development
-opt-in using `-PandroidKitUseMavenLocal=true -PandroidKitVersion=<local-version>`.
-The committed resource validator and packaged MIT/third-party notices match the
-public release. GitHub Actions builds use the public repository exclusively.
-
-The current pinned Android Kit release is `0.1.65`, downloaded from the public
-Maven repository with Maven Local disabled by default.
