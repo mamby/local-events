@@ -152,9 +152,9 @@ dependencies {
             because("Keep the app and AndroidX Test runtime classpaths on a compatible version.")
         }
     }
-    val composeBom = platform("androidx.compose:compose-bom:2026.09.00")
+    val composeBom = platform("androidx.compose:compose-bom:2026.11.01")
     val androidKitBom = platform("net.mamby.androidkit:bom:${providers.gradleProperty("androidKitVersion").get()}")
-    val lifecycleVersion = "2.11.0"
+    val lifecycleVersion = "2.11.1"
     val media3Version = "1.11.1"
     val navigationVersion = "2.10.2"
     val ktorVersion = "3.6.1"
